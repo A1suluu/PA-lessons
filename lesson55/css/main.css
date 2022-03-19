@@ -1,0 +1,21 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.cities {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.cities a {
+    width: 250px;
+    height: 250px;
+    background-color: aquamarine;
+    text-align: center;
+    margin: 20px;
+    font-size: 24px;
+    text-decoration: none;
+    padding-top: 30px;
+}

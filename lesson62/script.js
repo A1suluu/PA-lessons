@@ -1,0 +1,1 @@
+console.log(mySum(5, 2))

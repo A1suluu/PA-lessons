@@ -1,0 +1,10 @@
+.trace {
+    background-color: darkgreen;
+    width: 90vw;
+    height: 200px;
+}
+.rabbit, .turtle {
+    position: absolute;
+    transition: 0,3s;
+    left: 50px;
+}
