@@ -1,12 +1,8 @@
-for (let a = 1; a <= 100; a++) {
-    for (let b = 1; b <= 100; b++) {
-        for (let c = 1; c <= 100; c++) {
-            if ( a ** 2 + b ** 2 === c ** 2) {
-                if ( a + b + c === 12) {
-                    if (a < b && b < c) {
-                        console.log(a, b, c)
-                    }
-                }
+for (let a = 1; a <= 1000; a++) {
+    for (let b = 1; b <= 1000; b++) {
+        for (let c = 1; c <= 1000; c++) {
+            if ((a ** 2 + b ** 2 === c ** 2) && (a < b && b < c) && (a + b + c === 1000)) {
+                console.log(a, b, c)
             }
         }
     }
