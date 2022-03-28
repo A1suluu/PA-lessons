@@ -26,6 +26,10 @@
 // })
 // console.log(newGoods)
 
+// let b = [6, 2, 9, 4, 13, 9]
+
+// let c2 = b.map(item => item * 2)
+// console.log(c2)
 // let newG = []
 // for (let i = 0; i < goods.length; i++) {
 //     let o = goods[i]
@@ -35,15 +39,35 @@
 // } 
 // console.log(newG)
 
-let b = [6, 2, 9, 4, 13, 9]
-let goods = [
-    {goodName: "Computer", price: 1000},
-    {goodName: "Laptop", price: 900},
-    {goodName: "Printer", price: 500},
-]
+
+
+
 
 // reverse
 // Метод arr.reverse меняет порядок элементов в arr на обратный.
-let c = b.sort( (a, b) => a - b).reverse()
-console.log(b, c)
+// меняет весь массив
+
+// let c = b.sort( (a, b) => a - b).reverse()
+// console.log(b, c)
+
+
+
+
+
+
+//split и join
+// let names = 'Вася, Петя, Маша';
+
+// let arr = names.split(', ');
+
+// for (let name of arr) {
+//   alert( `Сообщение получат: ${name}.` ); // Сообщение получат: Вася (и другие имена)
+// }
+
+// let arr = [5, 2, 1, -10, 8];
+// arr.sort((a, b) => b - a);
+
+// alert( arr );
+
+
 
