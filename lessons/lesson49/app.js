@@ -30,7 +30,6 @@ function go (event) {
 
     dino.style.left = `${x}px`
 
-    // console.log(x, y)
     setTimeout(() => checkStop(), 310)
     
 }
@@ -58,7 +57,6 @@ function checkStop() {
     let x2 = x1 + tw
     let y3 = y1 + th
 
-    // console.log(x, y)
     
     if (handX > x1 && handX < x2 && handY < y3 && handY > y1) {
         setTimeout(() => {
@@ -67,27 +65,18 @@ function checkStop() {
         }, 310)
     }
 
-//     if (!gameStop && handX > x1) {
-//         points++
-//     }
-//     console.log(points)
-// }
 
+    if (!gameStop && handX > x1 && handX < x2) {
+        points++
+    }
+    
+    let checkPoints = document.querySelector(".points")
 
-if (handX > x2) {
-    tree.getAttribute("id", "tree")
-    tree.setAttribute("id", "tree2 ")
-
+    checkPoints.innerHTML = `points: ${points}` 
+    console.log(points)
 }
 
-let checkPoints = document.querySelector(".points")
 
-if (!gameStop && handX > x1 && handX < x2) {
-    points ++ 
-}
-checkPoints.innerHTML = `points: ${points}` 
-console.log(points)
-}
 
 
    // transform/ если попадает игра заканчивантся. разворот на право и на лево и чтобы мог ходить
