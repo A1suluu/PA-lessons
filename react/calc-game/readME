@@ -12,6 +12,7 @@
 +
 <TaskNumber num={state.num2}/>             
            
-           
+                            <Counter text="Correct" styleClass="right" currentValue={state.correct}/>
+                    <div >Wrong: <span className="wrong">{state.wrong}</span></div>   
 
 
