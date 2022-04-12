@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/babel">
+        function MyInput (props) {
+            return (
+                <input type="text"
+                 id={props.id} 
+                 placeholder="Пишите сюда" 
+                 value={props.value}
+                 onInput={changeState}/>
+
+        )}
+
+        
+        function App () {  // компонент App 
+            const [state, changeState] = React.useState({
+                input_1: 1,
+                input_2: 2,
+                result:3,
+            })
+
+            function changeState (event) {
+                
+            }
+                return(
+                    <div>
+                        <MyInput  id="input_1" value={state.input_1} onInput={changeState}/>
+                        <MyInput id="input_2"value={state.input_2} onInput={changeState}/>
+                        <button>Посчитать</button>
+                        <div id="result" value={state.result}></div>
+                    </div>
+        )}
+
+        ReactDOM.render(<App />, document.querySelector("#app"))
+    </script>
+</body>
+</html>

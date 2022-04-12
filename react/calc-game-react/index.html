@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div id="kaium"></div>
+    <script type="text/babel">
+        function App() {
+            const [state, setState] = React.useState({
+                num1: Math.ceil(Math.random() * 100),
+                num2: Math.ceil(Math.random() * 100),
+                result: "",
+                correct: 0,
+                wrong: 0,
+                currentSign: "+",
+                history: []
+            })
+
+            function changeRes(event) {
+                setState({
+                    ...state,
+                    result: event.target.value
+                })
+            }
+
+            function check(event) {
+                if (event.key === "Enter") {
+                    const currentSign = state.currentSign
+                    let isRight = false
+                    let task = `${state.num1} ${state.currentSign} ${state.num2} ${state.result}`
+                    if (currentSign == "+"){
+                        isRight = state.num1 + state.num2 === Number(state.result)
+                    } else if (currentSign == "-") {
+                        isRight = state.num1 - state.num2 === Number(state.result)
+                    } else if (currentSign == "*") {
+                        isRight = state.num1 * state.num2 === Number(state.result)
+                    } else if (currentSign == "/") {
+                        isRight = state.num1 / state.num2 === Number(state.result)
+                    }
+
+                    if (isRight) {
+                        setState({
+                            ...state,
+                            correct: state.correct + 1,
+                            num1: Math.ceil(Math.random() * 100),
+                            num2: Math.ceil(Math.random() * 100),
+                            result: "",
+                            history: state.history.concat([task + " v"])
+                        })
+                    } else {
+                        setState({
+                            ...state,
+                            wrong: state.wrong + 1,
+                            history: state.history.concat([task + " x"])
+                        })
+                    }
+                }                 
+            }
+
+            function changeSign(event) {
+                setState({
+                    ...state,
+                    currentSign: event.target.textContent,
+                    num1: Math.ceil(Math.random() * 100),
+                    num2: Math.ceil(Math.random() * 100),
+                })
+            }
+
+            const elemStyle = {
+                inputStyle: {
+                    color: "blue",
+                }
+            }
+
+            const taskStyle = {
+                fontSize: "48px",
+                color: "#eee",
+                background: "black",
+                marginBottom: "5px"
+            }
+
+            return (
+                <div>
+                    <div style={taskStyle}>
+                        <TaskNumber num={state.num1}/>
+                        <MathSign value={state.currentSign}/>
+                        <TaskNumber num={state.num2} />
+                    </div>
+                    <input style={elemStyle.inputStyle} autoFocus={true} type="text" value={state.result} onChange={changeRes} onKeyPress={check}/>
+                    <ActionButton fn={changeSign} mark="+"/>
+                    <ActionButton fn={changeSign} mark="-"/>
+                    <ActionButton fn={changeSign} mark="/"/>
+                    <ActionButton fn={changeSign} mark="*"/>
+                    <Counter text="Correct" styleClass="right" currentValue={state.correct}/>
+                    <Counter text="Wrong" styleClass="error" currentValue={state.wrong}/>
+                    <HistoryList list={state.history}/>
+                </div>
+            )
+        }
+
+        function HistoryList({list}){
+            return (
+                <div>
+                    {list.map((record, index) => <OneHistoryRecord key={index} text={record}/>)}
+                </div>
+            )
+        }
+
+        function OneHistoryRecord(props) {
+            return <div>{props.text}</div>
+        }
+
+        function MathSign({value}) {
+            return (
+                <span>{value}</span>
+            )
+        }
+
+        function ActionButton({mark, fn}) {
+            return (
+                <span>
+                    &nbsp;
+                    <button onClick={fn}>{mark}</button>
+                </span>
+            )
+        }
+
+        function TaskNumber({num}) {
+            return (
+                <span>{num}</span>
+            )
+        }
+
+        function Counter(props) {
+            return (
+                <div>
+                    {props.text}:&nbsp;
+                    <span className={props.styleClass}>
+                        {props.currentValue}
+                    </span>
+                </div>
+            )
+        }
+
+        ReactDOM.render(<App/>, document.getElementById("kaium"))
+    </script>
+</body>
+</html> 

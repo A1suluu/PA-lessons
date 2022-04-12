@@ -1,0 +1,12 @@
+.lightbulb {
+    width: 200px;
+    height: 200px;
+    border: none;
+}
+
+.on {
+    background-color: yellow;
+}
+.off {
+    background-color: black;
+}
