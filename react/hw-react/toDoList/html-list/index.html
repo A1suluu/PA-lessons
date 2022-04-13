@@ -13,89 +13,100 @@
 <body>
     <div id="Aisuluu"></div>
     <script type="text/babel">
-        function App () {
-    
-            const [todos, setTodos] = useState({})
+function App() {
+  const [todos, setTodos] = useState([])
 
-            
-            const addTask = () => {
-                if (userInput) {
-                    const newItem = {
-                        id: Math.random.toString(36).substr(2,9),
-                        task: userInput,
-                        complete: false
-                    }
-                    setTodos([...todos, newItem])
-                }
-            }
-            
-            const removeTask = () => {
-                
-            }
-            
-            const handleToggle = () => {
-                
-            }
-            
-            function ToDo (todo, toggleTask, removeTask) {
-                return (
-                    <div key={todo.id}  className="item-todo">
-                    {todo.task}
-                    <div>
-                    </div> 
-                    </div>
+  const addTask = (userInput) => {
+    if(userInput) {
+      const newItem = {
+        id: Math.random().toString(36).substr(2,9),
+        task: userInput,
+        complete: false
+      }
+      setTodos([...todos, newItem])
+    }
+  }
 
+  const removeTask = (id) => {
+    setTodos([...todos.filter((todo) => todo.id !== id)])
+  }
 
-                )
-            }
-            
-            const KeyPress = () => {
-                if(event.key === "Enter") {
-                    Submit(e)
-                }
-            }
+  const handleToggle = (id) => {
+    setTodos([
+      ...todos.map((todo) => 
+        todo.id === id ? { ...todo, complete: !todo.complete } : {...todo }
+      )
+    ])
+  }
 
-            function ToDoForm (addTask) {
-                const[userInput, setUserInput] = useState("")
+  return (
+    <div className="App">
+      <header>
+        <h1>Список задач: {todos.length}</h1>
+      </header>
+      <ToDoForm addTask={addTask} />
+      {todos.map((todo) => {
+        return (
+          <ToDo
+            todo={todo}
+            key={todo.id}
+            toggleTask={handleToggle}
+            removeTask={removeTask}
+            />
+        )
+      })}
+    </div>
+  );
+}
 
-                const Change = (event) => {
-                    setUserInput(event.currentTarget.value)
-                }
-
-                const Submit = (event) => {
-                    event.preventDefault()
-                    addTask(userInput)
-                    setUserInput("")
-                }
-
-                return (
-                    <form onSubmit={Submit}>
-                        <input type="text" value={userInput} onChange={Change} onKeyDown={KeyPress} placeholder="Write tasks"/>
-                        <button>Save</button>
-                    </form>
-                )
-            }
-    
-            return (
-                <div className="App">
-            <header>
-                <h1> List of tasks: {todos.length}</h1>
-            </header>
-            <ToDoForm addTask={addTask} />
-                {todos.map((todo) => {
-                    return (
-                         <ToDo 
-                         todo={todo}
-                         key={todos.id}
-                         toggleTask={handleToggle}
-                         removeTask={removeTask}
-                         />
-                    )
-            })}
+function ToDo({ todo, toggleTask, removeTask }) {
+    return (
+        <div key={todo.id} className="item-todo">
+            <div 
+                className={todo.complete ? "item-text strike" : "item-text"}
+                onClick={() => toggleTask(todo.id)}
+                >
+                {todo.task}
             </div>
-        );
-        }
+            <div className="item-delete" onClick={() => removeTask(todo.id)}>
+                X
+            </div>
+        </div>
+    )
+}
 
+function ToDoForm({ addTask }) {
+    const [userInput, setUserInput] = useState('')
+
+    const handleChange = (e) => {
+        setUserInput(e.currentTarget.value)
+    }
+    
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        addTask(userInput)
+        setUserInput("")
+    }
+
+    const handleKeyPress = (e) => {
+        if(e.key === "Enter") {
+            handleSubmit(e)
+        }
+    }
+    
+    return (
+        <form onSubmit={handleSubmit}>
+            <input 
+                value={userInput}
+                type="text"
+                onChange={handleChange}
+                onKeyDown={handleKeyPress}
+                placeholder="Введите значение..."
+            />        
+            <button>Сохранить</button>
+        </form>
+    )
+}
         ReactDOM.render(<App/>, document.getElementById("Aisuluu"))
     </script>
 </body>
