@@ -23,3 +23,7 @@ function App() {
 }
 
 export default App;
+
+// npm install
+// npm start
+// ctrl z/x
