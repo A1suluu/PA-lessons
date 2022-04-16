@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+.error {
+  color: red;
+}
+
+.right {
+  color: green;
+}
+
+table, th, td {
+  border: 1px solid;
+}
