@@ -1,0 +1,43 @@
+======================== компоненты ========================
+
+----------- Функциональные и классовые  компоненты-----------
+
+function Welcome(props) {
+  return <h1>Привет, {props.name}</h1>;
+}
+
+
+class Welcome extends React.Component {
+  render() {
+    return <h1>Привет, {this.props.name}</h1>;
+  }
+}
+
+
+----------- методы компонента -----------
+
+- Монтирование
+constructor()
+static getDerivedStateFromProps()
+render()
+componentDidMount()
+
+- Обновление
+static getDerivedStateFromProps()
+shouldComponentUpdate()
+render()
+getSnapshotBeforeUpdate()
+componentDidUpdate()
+
+- Удаления компонента
+componentWillUnmount
+
+- Обработка ошибок
+static getDerivedStateFromError()
+componentDidCatch()
+
+
+----------- render() -----------
+
+Метод render() — единственный обязательный методов в классовом компоненте.
+
