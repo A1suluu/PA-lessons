@@ -13,18 +13,20 @@ function App() {
     { id:3, title: ". JavaScript", body: "JavaScript  - язык программирования" }
   ])
 
-  const [posts2, setPosts2] = React.useState([
-    { id:1, title: ". Python", body: "Python  - язык программирования" }
-  ])
+  // const [posts2, setPosts2] = React.useState([
+  //   { id:1, title: ". Python", body: "Python  - язык программирования" }
+  // ])
 
 
-  const [tittle, setTittle] = React.useState("skdcn")
-  const bodyInputRef = useRef()
+  const [title, setTittle] = React.useState("skdcn")
 
   function addNewPost (e) {
-    e.preventDefault() 
-    console.log(tittle)
-    console.log(bodyInputRef.current.value)
+    const newPost = {
+      id: Date.now(),
+      title,
+      body
+    }
+    setPosts([...posts, newPost ])
   }
 
   return (
@@ -33,18 +35,17 @@ function App() {
       <Counter/>
       <br/><br/>
       <div>
-        {/* <MyInput  value={tittle}
+        <MyInput  
+        value={title}
         onChange={e => setTittle(e.target.value)}
-        type="text" placeholder="название поста"/> */}
-        <input type="text" ref={bodyInputRef}></input>
-        {/* <MyInput 
-        ref={bodyInputRef}
+        type="text" placeholder="название поста"/>
+        <MyInput 
+        value={body}
         type="text"
-        placeholder="описание поста"/> */}
+        placeholder="описание поста"/>
         <MyButton  onClick={addNewPost}>Создать пост</MyButton>
       </div>
       <PostList posts={posts} title={"Список постов 1"}/>
-      {/* <PostList posts={posts2} title={"Список постов 2"}/> */}
     </div>
   );
 }
