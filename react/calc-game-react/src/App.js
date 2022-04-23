@@ -23,7 +23,6 @@ function App() {
           ...state,
           result: event.target.value
         })
-        console.log(event.target.value)
   }
 
   function check(event) {

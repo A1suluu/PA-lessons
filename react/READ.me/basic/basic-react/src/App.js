@@ -1,70 +1,39 @@
-import logo from './logo.svg';
 import './App.css';
-import React, { useRef } from 'react'
-import Counter from './components/Counter';
-import ClassCounter from './components/ClassCounter';
-import PostItem from './components/PostItem';
+import React from 'react'
 import PostList from './components/PostList';
-import MyButton from './components/UI/button/MyButton';
-import MyInput from './components/UI/input/MyInput';
+import PostForm from './components/PostForm';
 
 function App() {
   const [posts, setPosts] = React.useState([
-    { id:3, title: ". JavaScript", body: "JavaScript  - язык программирования" }
+    { id:1, title: "JavaScript", body: "JavaScript  - язык программирования" }
   ])
 
-  // const [posts2, setPosts2] = React.useState([
-  //   { id:1, title: ". Python", body: "Python  - язык программирования" }
-  // ])
-
-
-  const [title, setTittle] = React.useState("skdcn")
-
-  function addNewPost (e) {
-    const newPost = {
-      id: Date.now(),
-      title,
-      body
-    }
-    setPosts([...posts, newPost ])
+  function createPost(newPost) {
+    setPosts([...posts, newPost])
   }
 
+  function removePost (post) {
+    setPosts(posts.filter(p => p.id !== post.id))
+  }
+
+
   return (
-    <div className="App">
-      <ClassCounter />
-      <Counter/>
-      <br/><br/>
-      <div>
-        <MyInput  
-        value={title}
-        onChange={e => setTittle(e.target.value)}
-        type="text" placeholder="название поста"/>
-        <MyInput 
-        value={body}
-        type="text"
-        placeholder="описание поста"/>
-        <MyButton  onClick={addNewPost}>Создать пост</MyButton>
-      </div>
-      <PostList posts={posts} title={"Список постов 1"}/>
+    <div className='App'>
+      <PostForm create={createPost}/>
+      <PostList  remove={removePost} posts={posts} title="Посты про JS"/>
     </div>
-  );
+  )
 }
+
 
 export default App;
 
 
 
+// propsы передаються от родителя к дочерним
+// диструиктизация 
 
 
 
 
 
-
-
-
-// const [value, setValue] = React.useState('Text in input')
-
-
-// function changeInput (event) {
-//   setValue(event.target.value)
-// }

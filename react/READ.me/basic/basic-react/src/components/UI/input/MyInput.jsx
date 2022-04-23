@@ -3,8 +3,8 @@ import classes from './MyInput.moduls.css'
 
 const MyInput = React.forwardRef((props, ref) => {
     return (
-        <input ref={ref} className={classes.myInput}{...props}/>
-    )
-})
+        <input ref={ref} className={classes.myInput} {...props}/>
+    );
+});
 
 export default MyInput;
