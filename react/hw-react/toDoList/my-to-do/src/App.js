@@ -1,38 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
-import FormTodo from './components/Form';
-import TodoList from './components/TodoList';
 import React from 'react'
+import PostList from './components/PostList';
+import PostForm from './components/PostForm';
 
 function App() {
-  const [todoState, setTodoState] = React.useState({
-    todos: [],
-  })
+  const [posts, setPosts] = React.useState([
+    { id:1, title: "To Do", body: "lorem inpuem lorem inpuemlorem inpuem" }
+  ])
 
-  function addTodo(text) {
-    setTodoState({
-      ...todoState,
-      todos: todoState.todos.concat([text]),
-    })
+  function createPost(newPost) {
+    setPosts([...posts, newPost])
   }
 
-  function changeInput(event) {
-    setTodoState({
-      ...todoState,
-    })
+  function removePost (post) {
+    setPosts(posts.filter(p => p.id !== post.id))
   }
+
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <div>
-          <FormTodo addTodo={addTodo}/>
-          <TodoList todos={todoState.todos}/>
-        </div>
-      </header>
+    <div className='App'>
+      <PostForm create={createPost}/>
+      <PostList  remove={removePost} posts={posts} title=""/>
     </div>
-  );
+  )
 }
+
 
 export default App;
