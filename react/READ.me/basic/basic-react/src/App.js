@@ -20,7 +20,7 @@ function App() {
   return (
     <div className='App'>
       <PostForm create={createPost}/>
-      <PostList  remove={removePost} posts={posts} title="Посты про JS"/>
+      <PostList  remove={removePost} posts={posts} title=""/>
     </div>
   )
 }
