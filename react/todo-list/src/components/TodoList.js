@@ -4,9 +4,9 @@ import TodoItem from './TodoItem'
 
 function TodoList({todos}) {
     return (
-        <ol>
-            {todos.map((todoObject, index) => <TodoItem todoObject={todoObject} key={index}/>)}
-        </ol>
+        <div>
+            {todos.map((todoObject, index) => <TodoItem todoObject={todoObject} key={index} id={index}/>)}
+        </div>
     )
 }
 

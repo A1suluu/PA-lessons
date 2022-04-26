@@ -6,13 +6,19 @@ import React from 'react'
 
 function App() {
   const [todoState, setTodoState] = React.useState({
-    todos: []
+    todos: [],
   })
 
-  function addTodo(newTodo) {
+  function addTodo(text) {
     setTodoState({
       ...todoState,
-      todos: todoState.todos.concat([newTodo])
+      todos: todoState.todos.concat([text]),
+    })
+  }
+
+  function changeInput(event) {
+    setTodoState({
+      ...todoState,
     })
   }
 
@@ -30,5 +36,3 @@ function App() {
 }
 
 export default App;
-
-
