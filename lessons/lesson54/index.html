@@ -9,31 +9,33 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form class="search_form" style="margin-left: 30px;">
-        <input type="text" placeholder="find news" class="search_input" > 
-        <button class="search_button ">Search</button>
-    </form  >
-    <div class="currency">
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="./main.css">
+        <script src="script.js"></script>
+    </head>
+    <body>
         <div class="table">
-        <div class="row cur_box" >
-            <div class="country"  id = "userCur"></div>
-            <div class="course" id = "userCurValue">0</div>
-       </div>
-         <div class="row">
-             <div class="country"  id = "usd">USD</div>
-             <div class="course" id = "usdValue">0</div>
+            <div class="row" id="usd">
+                <div class="country">USD</div>
+                <div class="course" id="usdValue">0</div>
+            </div>
+            <div class="row" id="eur">
+                <div class="country">EUR</div>
+                <div class="course" id="eurValue">0</div>
+            </div>
+            <div class="row" id="rub">
+                <div class="country">RUB</div>
+                <div class="course" id="rubValue">0</div>
+            </div>
         </div>
-        <div class="row" >
-            <div class="country" id = eur>EUR</div>
-            <div class="course" id="eurValue">0</div>
-       </div>
-       <div class="row" >
-        <div class="country" id = "rub">RUB</div>
-        <div class="course" id="rubValue">0</div>
-       </div>
-  </div>
-<br><br><br><br>
-
+    </body>
+    </html>
   
 </body>
 </html>

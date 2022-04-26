@@ -2,20 +2,24 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
- }
+}
+
 .table {
-    background-color: lightgrey;
+    background-color: lightgray;
     margin: 20px 0 0 30px;
     width: 50vw;
 }
+
 .row {
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
+
 .course {
     text-align: center;
 }
+
 .country, .course {
     border: 1px solid white;
-    padding: 5px;
+    padding: 5px;   
 }
