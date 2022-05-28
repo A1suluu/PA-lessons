@@ -1,7 +1,5 @@
-import React from "react";
+import React from 'react'
 
-function Homepage () {
-    return <div>Change version of toDO</div>
+export default function Homepage() {
+    return <div>Выберите версию ToDo</div>
 }
-
-export default Homepage;
